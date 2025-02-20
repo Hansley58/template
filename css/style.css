@@ -355,7 +355,11 @@ a:focus {
   line-height: 1em;
   color: #25283B;
   position: relative;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0 10px 20px #000;
 }
+
 .banner .content h1::after {
   position: absolute;
   inset: 0 0 0 0;
