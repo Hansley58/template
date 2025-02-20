@@ -364,26 +364,11 @@ a:focus {
   -webkit-text-stroke: 2px #d2d2d2;
   color: transparent;
 }
-.banner .content .author {
-  font-family: Poppins;
-  text-align: right;
-  max-width: 200px;
-}
+
 .banner .content h2 {
   font-size: 3em;
 }
-.banner .content .model {
-  background-image: url(images/roast.png);
-  width: 100%;
-  height: 75vh;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-size: auto 130%;
-  background-repeat: no-repeat;
-  background-position: top center;
-  z-index: 1;
-}
+
 @media screen and (max-width: 1023px) {
   .banner .slider {
       width: 160px;
