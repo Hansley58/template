@@ -101,6 +101,7 @@
     --color-white-bg: white;
     --color-dark-bg : #131516;
     --color-border  : var(--color-gray-2);
+    
 }
 
 /* ------------------------------------------------------------------- 
@@ -2902,6 +2903,8 @@ input::-moz-focus-inner {
     color: white;
 }
 
+
+
 /* ------------------------------------------------------------------- 
  * ## slick slider 
  * ------------------------------------------------------------------- */
@@ -3800,7 +3803,7 @@ body.search-is-visible {
   border-radius: 20px;
   border: 5px solid #e6e6e6;
   box-shadow: 0 70px 40px -20px rgba(0, 0, 0, 0.2);
-  transition: 0.4s ease-in-out transform;
+  transition: 0.7s ease-in-out transform;
 
   &:hover {
     transform: translate3d(0px, 0px, -250px);
@@ -4031,11 +4034,30 @@ body.search-is-visible {
  *
  * ------------------------------------------------------------------- */
 .s-blog {
-    background-color: var(--color-1-dark);
+    background-color: #000000;
     padding-top: calc(7 * var(--space));
     padding-bottom: calc(6 * var(--space));
     color: rgba(255, 255, 255, 0.7);
-}
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Keep it behind content */
+    pointer-events: none; /* Allows interaction with the content */
+  }
+  
+  .blog-entries, .section-head {
+    position: relative;
+    z-index: 2; /* Keeps text above particles */
+    color: white; /* Ensures readability */
+  }
+  
 
 .s-blog .section-head .desc {
     color: rgba(255, 255, 255, 0.8);
@@ -4485,6 +4507,19 @@ body.search-is-visible {
     margin-top: 0;
 }
 
+.s-contact__content .s-cta {
+    padding-top: var(--vspace-4);
+    padding-bottom: var(--vspace-4);
+    background-color: transparent;
+    font-size: var(--text-lg);
+    font-weight: 400;
+    line-height: var(--vspace-1_25);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+
+
 .s-contact__email-us {
     margin-top: var(--vspace-2);
 }
@@ -4500,6 +4535,7 @@ body.search-is-visible {
  * ------------------------------------------------------------------- */
 .s-contact__info-blocks {
     margin-left: auto;
+    
 }
 
 .s-contact__info-block {
