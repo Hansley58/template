@@ -4493,7 +4493,7 @@ body.search-is-visible {
     color: white;
 }
 
-.s-contact__content {
+.s-contact__content .s-cta {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -4504,66 +4504,103 @@ body.search-is-visible {
     position: relative;
 }
 
+.heading-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    line-height: 1; /* Keeps text compact */
+}
 
+/* Ensures h2 and h3 stay in place */
 .s-contact__content h2, 
 .s-contact__content h3 {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0;
     padding: 0;
-    transform: perspective(1200px) rotateX(40deg);
+    line-height: 1;
+    white-space: nowrap; /* Prevents text from breaking into new lines */
 }
 
+/* Apply perspective effect only on large screens */
+@media screen and (min-width: 769px) {
+    .s-contact__content h2, 
+    .s-contact__content h3 {
+        transform: perspective(1200px) rotateX(40deg);
+    }
+}
 
+/* Styling for h2 */
 .s-contact__content h2 {
-    font-size: 15rem; 
+    font-size: 15rem;
     color: transparent;
     -webkit-text-stroke: 1px white;
     position: relative;
+    display: inline-block; /* Keeps text on one line */
 }
 
-
+/* Styling for h3 */
 .s-contact__content h3 {
     font-size: 15rem;
     font-weight: bold;
-    color: white; 
+    color: white;
     text-transform: uppercase;
-    margin-bottom: 30px;
-    padding: 0;
-    opacity: 1;
+    display: inline-block; /* Ensures "WORK" stays next to "LET'S GET" */
 }
 
-
+/* Responsive Font Size Adjustments */
 @media screen and (max-width: 1600px) {
-    .s-contact__content h2 { font-size: 15rem; }
-    .s-contact__content h3 { font-size: 15rem; top: -70px; }
+    .s-contact__content h2, .s-contact__content h3 { font-size: 13rem; }
 }
 
 @media screen and (max-width: 1200px) {
-    .s-contact__content h2 { font-size: 9rem; }
-    .s-contact__content h3 { font-size: 9rem; top: -60px; }
+    .s-contact__content h2, .s-contact__content h3 { font-size: 11rem; }
 }
 
 @media screen and (max-width: 992px) {
-    .s-contact__content h2 { font-size: 7rem; }
-    .s-contact__content h3 { font-size: 7rem; top: -40px; }
+    .s-contact__content h2, .s-contact__content h3 { font-size: 9rem; }
 }
 
+/* Mobile Optimization - Remove Perspective & Keep "WORK" in Place */
 @media screen and (max-width: 768px) {
     .s-contact__content h2,
     .s-contact__content h3 {
-        transform: none; 
+        font-size: 8rem; /* Increased size for readability */
+        transform: none; /* Removes perspective effect */
+        white-space: nowrap; /* Prevents "WORK" from going under */
     }
-    .s-contact__content h2 { font-size: 4rem; }
-    .s-contact__content h3 { font-size: 4rem; top: -20px; }
 }
 
 @media screen and (max-width: 480px) {
     .s-contact__content h2,
     .s-contact__content h3 {
-        transform: none; 
+        font-size: 7rem; /* Maximum size for small screens */
+        transform: none;
+        white-space: nowrap;
     }
 }
+
+h3 span{
+    transition: 1s;
+}
+h3:hover span:nth-child(1){
+    margin-right: 5px;
+}
+h3:hover span:nth-child(1):after{
+   content: "'";
+}
+
+h3:hover span{
+    color: aliceblue;
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #fff,
+                 0 0 40px #fff,
+                 0 0 80px #fff,
+                 0 0 120px #fff,
+                 0 0 160px #fff;
+}
+
 
 .s-contact a:hover, .s-contact a:focus {
     color: var(--color-1);
@@ -4857,299 +4894,8 @@ body.search-is-visible {
 }
 
 
+/* ------------------------------------------------------------------- */
 
-/* ===================================================================
- * # blog styles and blog components
- *
- * ------------------------------------------------------------------- */
-.blog-content {
-    --content-padding-left: 18rem;
-    --content-padding-right: 18rem;
-    padding-top: calc(6 * var(--space));
-    padding-bottom: var(--vspace-4);
-    background-color: white;
-    min-height: 800px;
-}
-
-.page-title {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-align: center;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-top: calc(var(--vspace-2_5) * -1);
-    margin-bottom: var(--vspace-2);
-    font-size: var(--text-lg);
-}
-
-.page-title .light-text {
-    -ms-flex: 0 0 calc(var(--content-padding-left) + 10rem);
-    -webkit-box-flex: 0;
-    flex: 0 0 calc(var(--content-padding-left) + 10rem);
-    max-width: calc(var(--content-padding-left) + 10rem);
-    font-size: var(--text-xs);
-    color: var(--color-text-light);
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    text-align: right;
-    padding-right: 4.8rem;
-}
-
-.page-title .dark-text {
-    font-weight: 600;
-    border-bottom: 2px solid black;
-}
-
-/* -------------------------------------------------------------------
- * ## blog post
- * ------------------------------------------------------------------- */
-.blog-post {
-    padding-bottom: var(--vspace-2_5);
-    margin-bottom: var(--vspace-3_5);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.blog-post:last-child {
-    padding-bottom: var(--vspace-2);
-    margin-bottom: 0;
-    border-bottom: none;
-}
-
-.blog-post__header {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    margin-bottom: var(--vspace-1_5);
-    padding-right: var(--content-padding-right);
-}
-
-.blog-post__title {
-    margin: 0;
-    -ms-flex: 1 1 0%;
-    -webkit-box-flex: 1;
-    flex: 1 1 0%;
-}
-
-.blog-post__title a {
-    color: var(--color-text-dark);
-}
-
-.blog-post__title a:hover, .blog-post__title a:focus {
-    color: var(--color-1-dark);
-}
-
-.blog-post__meta {
-    -ms-flex: 0 0 calc(var(--content-padding-left) + 10rem);
-    -webkit-box-flex: 0;
-    flex: 0 0 calc(var(--content-padding-left) + 10rem);
-    max-width: calc(var(--content-padding-left) + 10rem);
-    -ms-flex-order: -1;
-    -webkit-box-ordinal-group: 0;
-    order: -1;
-    margin-top: var(--vspace-0_25);
-    font-size: calc(var(--text-size) * 0.8889);
-    line-height: calc(0.875 * var(--space));
-    color: var(--color-text-light);
-    text-align: right;
-    padding-right: 4.8rem;
-}
-
-.blog-post__date::before, .blog-post__cat::before {
-    font-size: calc(var(--text-size) * 0.8333);
-    font-weight: 600;
-    color: black;
-    display: block;
-}
-
-.blog-post__date {
-    margin-bottom: var(--vspace-0_25);
-}
-
-.blog-post__date::before {
-    content: "Published";
-}
-
-.blog-post__cat {
-    margin-bottom: 0;
-}
-
-.blog-post__cat::before {
-    content: "Categories";
-}
-
-.blog-post__cat a {
-    display: block;
-    color: var(--color-text-light);
-}
-
-.blog-post__thumb {
-    display: block;
-    margin-bottom: var(--vspace-1_5);
-}
-
-.blog-post__thumb img {
-    margin-bottom: 0;
-    vertical-align: bottom;
-}
-
-.blog-post__content {
-    padding-left: var(--content-padding-left);
-    padding-right: var(--content-padding-right);
-}
-
-.blog-post__tags {
-    margin-top: var(--vspace-1_5);
-    font-size: calc(var(--text-size) * 0.9444);
-    color: var(--color-text-light);
-}
-
-.blog-post__tags .blog-post__tags-title, 
-.blog-post__tags .blog-post__tags-list {
-    display: inline-block;
-}
-
-.blog-post__tags .blog-post__tags-title {
-    font-weight: 600;
-    color: black;
-    margin-right: .8rem;
-}
-
-.blog-post__tags a {
-    display: inline-block;
-    color: var(--color-text-light);
-}
-
-.blog-post__tags a::after {
-    content: ",  ";
-}
-
-.blog-post__tags a:last-child::after {
-    display: none;
-}
-
-/* -------------------------------------------------------------------
- * ## blog entry navigation
- * ------------------------------------------------------------------- */
-.blog-post-nav-wrap {
-    padding: var(--vspace-2) 0 var(--vspace-3);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    position: relative;
-}
-
-.blog-post-nav-wrap::before {
-    content: "";
-    display: block;
-    height: 100%;
-    width: 1px;
-    background-color: var(--color-border);
-    position: absolute;
-    left: 50%;
-    top: 0;
-}
-
-.blog-post-nav {
-    max-width: 920px;
-}
-
-.blog-post-nav span {
-    display: block;
-    font-size: var(--text-xs);
-    line-height: var(--vspace-0_75);
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: .25rem;
-    color: var(--color-text-light);
-    margin-bottom: 1.2rem;
-}
-
-.blog-post-nav a {
-    font-family: var(--font-2);
-    font-weight: 600;
-    font-size: var(--text-xl);
-    line-height: var(--vspace-1_25);
-    color: black;
-}
-
-.blog-post-nav a:hover, .blog-post-nav a:focus {
-    color: var(--color-1);
-}
-
-.blog-post-nav__prev {
-    padding: 0 6rem 0 2rem;
-}
-
-.blog-post-nav__next {
-    padding: 0 2rem 0 6rem;
-}
-
-/* -------------------------------------------------------------------
- * ## category block
- * ------------------------------------------------------------------- */
-.category-block {
-    text-align: center;
-    padding-top: 0;
-    padding-bottom: var(--vspace-4);
-    background-color: var(--color-white);
-}
-
-.category-block h3 {
-    display: inline-block;
-    padding: var(--vspace-0_5) var(--vspace-1);
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: white;
-    border: 1px solid var(--color-border);
-    font-size: var(--text-md);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.category-block .column {
-    border-top: 1px solid var(--color-border);
-}
-
-.category-list {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-flow: row wrap;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    flex-flow: row wrap;
-    -ms-flex-pack: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    font-weight: 500;
-    list-style: none;
-    margin-left: 0;
-}
-
-.category-list li {
-    padding-left: 0;
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-
-.category-list a {
-    font-size: calc(var(--text-size) * 1.056);
-    line-height: var(--vspace-1_75);
-    color: black;
-}
-
-.category-list a:hover, .category-list a:focus {
-    color: var(--color-1);
-}
-
-.category-list .current a {
-    color: var(--color-1);
-}
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * blog styles and blog components
- * ------------------------------------------------------------------- */
 @media screen and (max-width: 1200px) {
     .blog-content {
         --content-padding-left: 16vw;
