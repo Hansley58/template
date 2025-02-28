@@ -4554,6 +4554,8 @@ body.search-is-visible {
     .s-contact__content h3 {
         transform: none; 
     }
+    .s-contact__content h2 { font-size: 4rem; }
+    .s-contact__content h3 { font-size: 4rem; top: -20px; }
 }
 
 @media screen and (max-width: 480px) {
