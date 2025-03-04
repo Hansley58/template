@@ -4463,7 +4463,7 @@ body.search-is-visible {
  * # contact
  *
  * ------------------------------------------------------------------- */
-.s-contact {
+ .s-contact {
     background-color: black;
     padding-top: calc(6 * var(--space));
     padding-bottom: var(--vspace-2);
@@ -4502,6 +4502,9 @@ body.search-is-visible {
     padding: 20px;
     text-align: center;
     position: relative;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;  
 }
 
 .heading-block {
@@ -4509,10 +4512,12 @@ body.search-is-visible {
     flex-direction: column;
     align-items: center;
     position: relative;
-    line-height: 1; /* Keeps text compact */
+    line-height: 1; 
+    max-width: 100%; 
+    word-wrap: break-word;
 }
 
-/* Ensures h2 and h3 stay in place */
+
 .s-contact__content h2, 
 .s-contact__content h3 {
     font-weight: bold;
@@ -4520,10 +4525,11 @@ body.search-is-visible {
     margin: 0;
     padding: 0;
     line-height: 1;
-    white-space: nowrap; /* Prevents text from breaking into new lines */
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
-/* Apply perspective effect only on large screens */
+
 @media screen and (min-width: 769px) {
     .s-contact__content h2, 
     .s-contact__content h3 {
@@ -4531,55 +4537,23 @@ body.search-is-visible {
     }
 }
 
-/* Styling for h2 */
+
 .s-contact__content h2 {
     font-size: 15rem;
     color: transparent;
     -webkit-text-stroke: 1px white;
     position: relative;
-    display: inline-block; /* Keeps text on one line */
+    display: inline-block; 
 }
 
-/* Styling for h3 */
 .s-contact__content h3 {
     font-size: 15rem;
     font-weight: bold;
     color: white;
     text-transform: uppercase;
-    display: inline-block; /* Ensures "WORK" stays next to "LET'S GET" */
+    display: inline-block;
 }
 
-/* Responsive Font Size Adjustments */
-@media screen and (max-width: 1600px) {
-    .s-contact__content h2, .s-contact__content h3 { font-size: 13rem; }
-}
-
-@media screen and (max-width: 1200px) {
-    .s-contact__content h2, .s-contact__content h3 { font-size: 11rem; }
-}
-
-@media screen and (max-width: 992px) {
-    .s-contact__content h2, .s-contact__content h3 { font-size: 9rem; }
-}
-
-/* Mobile Optimization - Remove Perspective & Keep "WORK" in Place */
-@media screen and (max-width: 768px) {
-    .s-contact__content h2,
-    .s-contact__content h3 {
-        font-size: 8rem; /* Increased size for readability */
-        transform: none; /* Removes perspective effect */
-        white-space: nowrap; /* Prevents "WORK" from going under */
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .s-contact__content h2,
-    .s-contact__content h3 {
-        font-size: 7rem; /* Maximum size for small screens */
-        transform: none;
-        white-space: nowrap;
-    }
-}
 
 h3 span{
     transition: 1s;
@@ -4601,10 +4575,123 @@ h3:hover span{
                  0 0 160px #fff;
 }
 
-
 .s-contact a:hover, .s-contact a:focus {
     color: var(--color-1);
 }
+
+
+.email-us {
+  all: unset;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #000000;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transform: perspective(1200px) rotateX(40deg)
+}
+
+.email-us::after,
+.email-us::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.email-us::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.email-us::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffffc8;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+
+.email-us:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.email-us:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.email-us:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+.email-us a{
+    color: #000000;
+    font-family: Archivo, Archivo Placeholder, sans-serif;
+    font-size: 2rem;
+}
+.email-us a:hover{
+    color: #000000;
+    font-style: bold;
+   font-size: 2.5rem;
+}
+    
+
+    @media screen and (max-width: 1600px) {
+        .s-contact__content h2, .s-contact__content h3 { font-size: 13rem; }
+        .email-us
+    }
+    
+    @media screen and (max-width: 1200px) {
+        .s-contact__content h2, .s-contact__content h3 { font-size: 11rem; }
+    }
+    
+    @media screen and (max-width: 992px) {
+        .s-contact__content h2, .s-contact__content h3 { font-size: 8rem; }
+    }
+    
+    
+    @media screen and (max-width: 768px) {
+        .s-contact__content h2,
+        .s-contact__content h3 {
+            font-size: 6rem;
+            transform: none;
+            white-space: normal;
+            text-align: center;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .s-contact__content h2,
+        .s-contact__content h3 {
+            font-size: 4.5rem; 
+        }
+    }
+    
 
 /* ------------------------------------------------------------------- 
  * ## contact content
@@ -4631,6 +4718,7 @@ h3:hover span{
 
 .s-contact__email-us {
     margin-top: var(--vspace-2);
+    max-width: 600px;
 }
 
 .s-contact__email-us .btn:hover, .s-contact__email-us .btn:focus {
