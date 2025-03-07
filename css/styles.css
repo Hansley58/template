@@ -3494,6 +3494,13 @@ body.search-is-visible {
     border: none;
 }
 
+@media (max-width: 768px) {
+    .s-home .spline-bg iframe {
+        height: 50px; 
+        width: auto; 
+    }
+}
+
 
 .no-js .s-home {
     background: var(--color-dark-bg);
@@ -4663,7 +4670,6 @@ h3:hover span{
 
     @media screen and (max-width: 1600px) {
         .s-contact__content h2, .s-contact__content h3 { font-size: 13rem; }
-        .email-us
     }
     
     @media screen and (max-width: 1200px) {
@@ -4683,13 +4689,39 @@ h3:hover span{
             white-space: normal;
             text-align: center;
         }
+        .email-us{
+            transform: none;
+            height: 25px;
+            width: 75px;
+        }
+        .email-us a{
+            font-size: 1.7rem;
+        }
     }
     
     @media screen and (max-width: 480px) {
         .s-contact__content h2,
         .s-contact__content h3 {
-            font-size: 4.5rem; 
+            font-size: 4rem; 
         }
+        .email-us{
+            transform: none;
+            height: 20px;
+            width: 40px;
+            margin-top: 20px;
+        }
+        .email-us a{
+            font-size: 1.3rem;
+        }
+        .email-us::after {
+            transform: translate(10px, 10px);
+            width: 20px;
+            height: 20px;
+            background: #ffffffc8;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 50px;
+          }
     }
     
 
@@ -5546,3 +5578,111 @@ h3:hover span{
         padding-top: var(--vspace-1);
     }
 }
+
+
+.comments-wrap .formbutton{
+    align-items: center;
+}
+  
+  .formbutton {
+    display: grid;
+    margin-top: 20px;
+    place-items: center;
+    min-height: 10vh;
+    background: var(--bg);
+    --dark: 0;
+    --transition: 0.28s;
+    --font-size: 2rem;
+    --color: hsl(0 0% calc(var(--dark) * 100%));
+  }
+  
+
+  
+  button {
+    outline-color: hsl(0 0% calc(var(--dark) * 100%));
+    cursor: pointer;
+    letter-spacing: calc(var(--font-size) * 0.02);
+    font-family: sans-serif;
+    font-weight: bold;
+    background: var(--bg);
+    font-size: var(--font-size);
+    border-radius: calc(var(--font-size) * 0.5);
+    border:
+      4px
+      solid
+      hsl(0 0% calc((40 + (var(--dark) * 20)) * 1%) / calc(0.3 + (var(--hovered, 0) * 0.8)));
+    color: var(--color);
+    position: relative;
+    transition: border-color var(--transition);
+  }
+  
+  button > span {
+    background: var(--bg);
+    padding: calc(var(--font-size) * 0.9) calc(var(--font-size) * 1.36);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns:
+      calc((var(--font-size) * 1.75) * (1 - var(--hovered, 0)))
+      1fr
+      calc((var(--font-size) * 1.75) * var(--hovered, 0));
+    align-items: center;
+    transition: grid-template-columns var(--transition);
+  }
+  
+  button:after {
+    content: "";
+    position: absolute;
+    inset: calc(var(--font-size) * -0.025);
+    background: hsl(0 0% calc(var(--dark) * 100%) / 0.45);
+    filter: blur(calc(var(--font-size) * 0.75));
+    scale: var(--hovered, 0);
+    z-index: -1;
+    transition: scale var(--transition);
+  }
+  
+  button:hover {
+    --hovered: 1;
+  }
+  
+  span span:nth-of-type(1) {
+    padding-right: var(--padding);
+    width: var(--font-size);
+  }
+  
+  span span:nth-of-type(3) {
+    padding-left: var(--padding);
+    width: var(--font-size);
+  }
+  
+  
+  svg {
+    display: inline-block;
+    transition: translate var(--transition) ease-in-out, opacity var(--transition) ease-in-out;
+  }
+  
+  
+  button:is(:focus-visible, :hover) {
+    --hovered: 1;
+  }
+  
+  span span:nth-of-type(3) svg {
+    stroke-width: 3;
+    translate: calc((1 - var(--hovered, 0)) * (var(--font-size) * 3)) 8%;
+    width: calc(var(--font-size) * 1);
+    opacity: var(--hovered, 0);
+  }
+  
+  span span:nth-of-type(1) svg {
+    stroke-width: 3;
+    translate: calc(((var(--hovered, 0) * var(--font-size)) * -3) + 10%) 8%;
+    width: calc(var(--font-size) * 0.8);
+  }
+
+
+  .error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+ 

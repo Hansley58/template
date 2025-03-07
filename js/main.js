@@ -428,3 +428,48 @@ window.addEventListener("resize", resizeCanvas);
 // Start particle effect
 initParticles();
 animateParticles();
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    let isValid = true;
+
+    // Get form fields
+    let name = document.getElementById("cName").value.trim();
+    let email = document.getElementById("cEmail").value.trim();
+    let message = document.getElementById("cMessage").value.trim();
+
+    // Get error elements
+    let nameError = document.getElementById("nameError");
+    let emailError = document.getElementById("emailError");
+    let messageError = document.getElementById("messageError");
+
+    // Reset errors
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+
+    // Name validation
+    if (name === "") {
+        nameError.textContent = "Name is required.";
+        isValid = false;
+    }
+
+    // Email validation
+    if (email === "") {
+        emailError.textContent = "Email is required.";
+        isValid = false;
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        emailError.textContent = "Invalid email format.";
+        isValid = false;
+    }
+
+    // Message validation
+    if (message === "") {
+        messageError.textContent = "Message is required.";
+        isValid = false;
+    }
+
+    // Prevent form submission if not valid
+    if (!isValid) {
+        event.preventDefault();
+    }
+});
