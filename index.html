@@ -4669,7 +4669,7 @@
               >
                 Send us a Message
               </h3>
-              <form>
+              <form id="contact-form">
                 <div class="mb-[22px]">
                   <label
                     for="fullName"
@@ -4693,19 +4693,6 @@
                     type="email"
                     name="email"
                     placeholder="example@yourmail.com"
-                    class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-dark-6"
-                  />
-                </div>
-                <div class="mb-[22px]">
-                  <label
-                    for="phone"
-                    class="mb-4 block text-sm text-body-color dark:text-dark-6"
-                    >Phone*</label
-                  >
-                  <input
-                    type="text"
-                    name="phone"
-                    placeholder="+885 1254 5211 552"
                     class="w-full border-0 border-b border-[#f1f1f1] bg-transparent pb-3 text-body-color placeholder:text-body-color/60 focus:border-primary focus:outline-none dark:border-dark-3 dark:text-dark-6"
                   />
                 </div>
@@ -5474,5 +5461,28 @@
         },
       });
     </script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzc-1OxR1L5ZZXZR2BfkreF3-MgYBBPUIFWjFJtUADg7LlGLTLqSZ9czYC6IjrYQzNN/exec';
+
+  document.getElementById('contact-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => alert("Message sent successfully!"))
+    .catch(err => alert("Error sending message."));
+  });
+</script>
+
   </body>
 </html>
