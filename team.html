@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our team</title>
+  <!--
+  TemplateMo 622 Clearwave
+  https://templatemo.com/tm-622-clearwave
+  Free for personal and commercial use
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="templatemo-622-clearwave.css" />
+  <link rel="icon" type="image/png" href="images/logopage.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <!-- ── MOBILE MENU ── -->
+<div class="mobile-menu text-white" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <a href="index.html#screens" class="text-white" style="color: #000000 !important;">App</a>
+  <a href="index.html#features" class="text-white" style="color: #000000 !important;">Features</a>
+  <a href="index.html#testimonials" class="text-white" style="color: #000000 !important;">Reviews</a>
+  <a href="index.html#integrations" class="text-white" style="color: #000000 !important;">Integrations</a>
+  <a href="index.html#faq" class="text-white" style="color: #000000 !important;">FAQ</a>
+  <a href="team.html" class="text-white" style="color: #000000 !important;">Team</a>
+</div>
+
+<!-- ── 1. NAV ── -->
+<nav class="nav text-white" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img alt="logo" src="images/logo.png" style="height: 12vh; width: auto;"></a>
+    <ul class="nav-links text-white" role="list">
+      <li><a href="index.html#screens" class="text-white" style="color: #000000 !important;">App</a></li>
+      <li><a href="index.html#features" class="text-white" style="color: #000000 !important;">Features</a></li>
+      <li><a href="index.html#testimonials" class="text-white" style="color: #000000 !important;">Reviews</a></li>
+      <li><a href="index.html#faq" class="text-white" style="color: #000000 !important;">FAQ</a></li>
+      <li><a href="team.html" class="text-white" style="color: #000000 !important;"><span class="text-white" style="color: #000000 !important;">Team</span></a></li>
+    </ul>
+
+    <!-- DYNAMIC AUTH CONTAINER -->
+    <div class="nav-cta" id="authContainer" style="position: relative !important;">
+      
+      <!-- STATE 1: SIGN IN BUTTON (Default) -->
+      <button id="openSignIn" class="btn-ghost text-white" style="color: #000000 !important; background: transparent; border: none; cursor: pointer; font-size: 14px; font-weight: 500;">
+        Sign in
+      </button>
+
+      <!-- STATE 2: USER PROFILE DROPDOWN (Hidden by default) -->
+      <div id="userProfile" style="display: none; position: relative !important; align-items: center !important;">
+        <button id="profileBtn" type="button" style="background: transparent !important; border: none !important; cursor: pointer !important; display: flex !important; items-center !important; gap: 10px !important; padding: 0 !important;">
+          <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Profile" style="width: 38px !important; height: 38px !important; border-radius: 50% !important; object-fit: cover !important; border: 2px solid #1b7a67 !important;" />
+          <span id="userName" style="color: #000000 !important; font-size: 14px !important; font-weight: 600 !important;">Alex Morgan</span>
+          <span style="color: #99f6e4 !important; font-size: 10px !important;">▼</span>
+        </button>
+
+        <!-- PROFILE DROPDOWN MENU -->
+        <div id="profileDropdown" style="display: none; position: absolute !important; top: 120% !important; right: 0 !important; width: 180px !important; background-color: #0f1d1a !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; border-radius: 16px !important; padding: 8px 0 !important; box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important; z-index: 10000 !important;">
+          <div style="height: 1px !important; background-color: rgba(20, 184, 166, 0.2) !important; margin: 4px 0 !important;"></div>
+          <button id="signOutBtn" type="button" style="width: 100% !important; text-align: left !important; background: transparent !important; border: none !important; padding: 10px 16px !important; color: #f87171 !important; font-size: 13px !important; cursor: pointer !important;" onmouseover="this.style.backgroundColor='#162a26'" onmouseout="this.style.backgroundColor='transparent'">
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ── SIGN IN MODAL OVERLAY ── -->
+<div id="signInModal" style="display: none; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(0, 0, 0, 0.75) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; z-index: 99999 !important; align-items: center !important; justify-content: center !important; padding: 16px !important;">
+  
+  <!-- Modal Card -->
+  <div style="position: relative !important; width: 100% !important; max-width: 420px !important; background-color: #0f1d1a !important; border: 1px solid rgba(20, 184, 166, 0.2) !important; border-radius: 24px !important; padding: 32px 24px !important; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important; color: #000000 !important; box-sizing: border-box !important;">
+    
+    <!-- Close Button -->
+    <button id="closeSignIn" type="button" style="position: absolute !important; top: 20px !important; right: 20px !important; background: transparent !important; border: none !important; color: #9ca3af !important; font-size: 20px !important; line-height: 1 !important; cursor: pointer !important; padding: 4px !important;">✕</button>
+
+    <!-- Modal Header -->
+    <div style="text-align: center !important; margin-bottom: 24px !important;">
+      <h2 style="font-size: 24px !important; font-weight: 700 !important; color: #000000 !important; margin: 0 0 6px 0 !important;">Welcome back</h2>
+      <p style="font-size: 13px !important; color: #99f6e4 !important; opacity: 0.8 !important; margin: 0 !important;">Sign in to your Clearwave dashboard</p>
+    </div>
+
+    <!-- Sign In Form -->
+    <form id="signInForm" style="display: flex !important; flex-direction: column !important; gap: 16px !important;">
+      
+      <div style="text-align: left !important;">
+        <label style="display: block !important; font-size: 12px !important; font-weight: 500 !important; color: #ccfbf1 !important; margin-bottom: 6px !important;">Email Address</label>
+        <input id="emailInput" type="email" required placeholder="alex@company.com" style="width: 100% !important; background-color: #162a26 !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; border-radius: 12px !important; padding: 10px 14px !important; font-size: 14px !important; color: #000000 !important; outline: none !important; box-sizing: border-box !important;" />
+      </div>
+
+      <div style="text-align: left !important;">
+        <div style="display: flex !important; justify-content: space-between !important; align-items: center !important; margin-bottom: 6px !important;">
+          <label style="font-size: 12px !important; font-weight: 500 !important; color: #ccfbf1 !important;">Password</label>
+        </div>
+        <input id="passwordInput" type="password" required placeholder="••••••••" style="width: 100% !important; background-color: #162a26 !important; border: 1px solid rgba(20, 184, 166, 0.3) !important; border-radius: 12px !important; padding: 10px 14px !important; font-size: 14px !important; color: #000000 !important; outline: none !important; box-sizing: border-box !important;" />
+      </div>
+
+      <button type="submit" id="submitBtn" style="width: 100% !important; background-color: #1b7a67 !important; color: #000000 !important; font-weight: 600 !important; font-size: 14px !important; padding: 12px !important; border-radius: 9999px !important; border: none !important; cursor: pointer !important; margin-top: 8px !important;">
+        Sign In
+      </button>
+
+    </form>
+
+    <!-- Modal Footer -->
+    <div style="margin-top: 20px !important; text-align: center !important; font-size: 12px !important; color: #99f6e4 !important; opacity: 0.8 !important;">
+      Don't have an account? 
+      <a href="payment.html" style="color: #5eead4 !important; font-weight: 600 !important; text-decoration: underline !important;">Start Free Trial</a>
+    </div>
+
+  </div>
+</div>
+
+  <!-- ── 2. HERO ── -->
+  <section 
+  class="hero" 
+  style="position: relative !important; width: 100% !important; min-height: 100vh !important; display: flex !important; align-items: center !important; justify-content: center !important; overflow: hidden !important; padding: 80px 16px !important;"
+>
+  
+  <!-- 1. FULL-SCREEN BACKGROUND VIDEO -->
+  <video 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; z-index: 0 !important; pointer-events: none !important; margin: 0 !important; padding: 0 !important;"
+  >
+    <source src="video/1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- 2. DARK OVERLAY TINT (FOR TEXT CONTRAST) -->
+  <div style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; background-color: rgba(255, 255, 255, 0.5) !important; z-index: 1 !important; pointer-events: none !important;"></div>
+
+  <!-- 3. CENTERED CONTENT CONTAINER -->
+  <div 
+    class="container" 
+    style="position: relative !important; z-index: 10 !important; width: 100% !important; max-w: 1200px !important; margin: 0 auto !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important;"
+  >
+    <div 
+      class="hero-inner" 
+      style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important; width: 100% !important;"
+    >
+      <div 
+        class="hero-content" 
+        style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important; width: 100% !important;"
+      >
+        
+        <!-- BADGE -->
+        <div 
+          class="hero-badge reveal" 
+          style="display: inline-flex !important; align-items: center !important; justify-content: center !important; margin: 0 auto 24px auto !important;"
+        >
+          <div class="hero-badge-dot">✦</div>
+          <span>Rated <strong>#1 Productivity SaaS</strong> of 2024</span>
+        </div>
+
+        <!-- TITLE -->
+        <h1 
+          class="hero-title reveal reveal-delay-1" 
+          style="text-align: center !important; margin: 0 auto !important; color: #000000 !important;"
+        >
+          Your workflow,<br><em style="color: #5eead4 !important;">finally clear.</em>
+        </h1>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+  <!-- ── 3. LOGO TICKER ── -->
+  <div class="ticker-section">
+    <div class="ticker-label">Trusted by forward-thinking teams at</div>
+    <div class="ticker-track-wrap">
+      <div class="ticker-track">
+        <!-- Set 1 -->
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>Nexaflow</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>Meridian</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="12,2 22,20 2,20"/></svg></div>Vanta Labs</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M4 4h16v12H4z M8 20h8"/></svg></div>Pulsar HQ</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>Arclight</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>Korova Co.</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>Stratum IO</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>Lumiq</div>
+        <div class="ticker-dot"></div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>Nexaflow</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>Meridian</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><polygon points="12,2 22,20 2,20"/></svg></div>Vanta Labs</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M4 4h16v12H4z M8 20h8"/></svg></div>Pulsar HQ</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>Arclight</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>Korova Co.</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>Stratum IO</div>
+        <div class="ticker-dot"></div>
+        <div class="ticker-item"><div class="ticker-item-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="var(--accent)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>Lumiq</div>
+        <div class="ticker-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class=" py-20 px-4 text-dark sm:px-6 lg:px-8 text-black font-sans">
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+          Meet our team
+        </h2>
+        <p class="text-dark text-sm sm:text-base leading-relaxed">
+          We're a dynamic group of individuals who are passionate about what we do and dedicated to delivering the best results for our clients.
+        </p>
+      </div>
+  
+      <!-- Team Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card 1: Leonard Krasner -->
+        <div class=" rounded-2xl p-8 flex flex-col items-center text-center" style="background: var(--text-1)">
+          <div class="w-40 h-40 rounded-full overflow-hidden mb-6 border-2 border-transparent">
+            <img 
+              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" 
+              alt="Leonard Krasner" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-base font-bold text-white mb-1">
+            Floyd Miles
+          </h3>
+          <p class="text-white text-sm mb-6">
+            Senior Designer
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-4 text-white">
+            <a href="#" class="hover:text-black transition-colors" aria-label="X (Twitter)">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-black transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+  
+        <!-- Card 2: Floyd Miles -->
+        <div class=" rounded-2xl p-8 flex flex-col items-center text-center" style="background: var(--text-1)">
+          <div class="w-40 h-40 rounded-full overflow-hidden mb-6 border-2 border-transparent">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" 
+              alt="Floyd Miles" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-base font-bold text-white mb-1">
+            Floyd Miles
+          </h3>
+          <p class="text-white text-sm mb-6">
+            Principal Designer
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-4 text-white">
+            <a href="#" class="hover:text-black transition-colors" aria-label="X (Twitter)">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-black transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+  
+        <!-- Card 3: Emily Selman -->
+        <div class=" rounded-2xl p-8 flex flex-col items-center text-center" style="background: var(--text-1)">
+          <div class="w-40 h-40 rounded-full overflow-hidden mb-6 border-2 border-transparent">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" 
+              alt="Emily Selman" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-base font-bold text-white mb-1">
+            Emily Selman
+          </h3>
+          <p class="text-white text-sm mb-6">
+            VP, User Experience
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-4 text-white">
+            <a href="#" class="hover:text-black transition-colors" aria-label="X (Twitter)">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="hover:text-black transition-colors" aria-label="LinkedIn">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  <!-- ── 11. CTA BANNER ── -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <div class="cta-content">
+          <div class="cta-label">✦ Get Started Today</div>
+          <h2 class="cta-title">Ready for a<br><em>clearer workflow?</em></h2>
+          <p class="cta-sub">Join 50,000+ teams who replaced chaos with clarity. Set up in under 10 minutes.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="#" class="btn-cta-primary">
+            Start Free Trial
+            <span>→</span>
+          </a>
+          <a href="#" class="btn-cta-ghost">Schedule a demo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 12. FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">clear<span style="color:var(--accent-light)">wave</span></a>
+          <p class="footer-brand-desc">The calm, powerful workspace for teams that want to focus on work — not on managing it.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Twitter / X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="TikTok">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Product</div>
+          <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#screens">Mobile App</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#integrations">Integrations</a>
+            <a href="#">Changelog</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Company</div>
+          <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Careers</a>
+            <a href="#">Press Kit</a>
+            <a href="#">Status</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Support</div>
+          <div class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Documentation</a>
+            <a href="#">Security</a>
+            <a href="#">Contact</a>
+            <a href="#">Community</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © 2026 Clearwave. Design by <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="templatemo-622-clearwave.js"></script>
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('openSignIn');
+    const closeBtn = document.getElementById('closeSignIn');
+    const modal = document.getElementById('signInModal');
+    const signInForm = document.getElementById('signInForm');
+    
+    const userProfile = document.getElementById('userProfile');
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const signOutBtn = document.getElementById('signOutBtn');
+    const userNameEl = document.getElementById('userName');
+
+    // 1. OPEN & CLOSE MODAL
+    function openModal(e) {
+      if (e) e.preventDefault();
+      modal.style.setProperty('display', 'flex', 'important');
+    }
+
+    function closeModal() {
+      modal.style.setProperty('display', 'none', 'important');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // 2. CHECK EXISTING SIGN-IN SESSION (PERSISTENCE VIA LOCALSTORAGE)
+    function checkAuthStatus() {
+      const savedUser = localStorage.getItem('clearwave_user');
+      if (savedUser) {
+        const user = JSON.parse(savedUser);
+        if (openBtn) openBtn.style.setProperty('display', 'none', 'important');
+        if (userNameEl) userNameEl.textContent = user.name;
+        if (userProfile) userProfile.style.setProperty('display', 'flex', 'important');
+      } else {
+        if (openBtn) openBtn.style.setProperty('display', 'inline-block', 'important');
+        if (userProfile) userProfile.style.setProperty('display', 'none', 'important');
+      }
+    }
+
+    // 3. SUBMIT SIGN-IN FORM
+    signInForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      
+      // Derive display name from email address
+      const extractedName = email.split('@')[0].replace('.', ' ');
+      const displayName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
+
+      // Save user session
+      const user = { name: displayName || 'Alex Morgan', email: email };
+      localStorage.setItem('clearwave_user', JSON.stringify(user));
+
+      // Update UI state
+      closeModal();
+      checkAuthStatus();
+      signInForm.reset();
+    });
+
+    // 4. TOGGLE PROFILE DROPDOWN MENU
+    profileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = profileDropdown.style.display === 'block';
+      profileDropdown.style.display = isVisible ? 'none' : 'block';
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', () => {
+      if (profileDropdown) profileDropdown.style.display = 'none';
+    });
+
+    // 5. SIGN OUT ACTION
+    signOutBtn.addEventListener('click', () => {
+      localStorage.removeItem('clearwave_user');
+      if (profileDropdown) profileDropdown.style.display = 'none';
+      checkAuthStatus();
+    });
+
+    // Initialize state on page load
+    checkAuthStatus();
+  });
+
+  
+  const toggle = document.getElementById('pricingToggle');
+  const planButtons = document.querySelectorAll('.plan-btn');
+
+  function updateLinks() {
+    const isAnnual = toggle ? toggle.getAttribute('aria-checked') === 'true' : false;
+    const billingCycle = isAnnual ? 'annual' : 'monthly';
+
+    planButtons.forEach(btn => {
+      const planName = btn.getAttribute('data-plan');
+      btn.href = `payment.html?plan=${planName}&billing=${billingCycle}`;
+    });
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      setTimeout(updateLinks, 50); // Updates after your toggle animation state changes
+    });
+  }
+
+  updateLinks(); // Initial load
+</script>
+</html>
